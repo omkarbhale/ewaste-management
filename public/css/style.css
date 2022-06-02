@@ -110,8 +110,10 @@ navbar {
 
 .footer-row {
   background-color: var(--themeOne);
-  height: 20vh;
   width: 100%;
+}
+.first-footer-row{
+  min-height: 20vh;
 }
 .subscribe-site {
   display: flex;
@@ -240,6 +242,26 @@ navbar {
 .card-back {
   transform: rotateY(180deg);
 }
+
+/* Footer about page  */
+
+.footer-about{
+  display: flex;
+}
+
+.footer-about-box{
+  width: 80%;
+  margin: auto;
+}
+.footer-about-box{
+  color: white;
+}
+.footer-about-box h3{
+  margin-top: 1rem;
+}
+
+
+
 
 /* Main content here  */
 
