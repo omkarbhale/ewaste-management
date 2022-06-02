@@ -371,3 +371,51 @@ navbar {
   content: "";
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
+
+
+
+
+
+
+/* Product page Css here  */
+
+.product-head-row{
+  width: 80%;
+  margin: auto;
+}
+.under-head-hr{
+  color: #798896;
+}
+.products-page-filters{
+  width: 80%;
+  margin: auto;
+}
+.products-page-filters ul{
+  display: flex;
+  list-style: none;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.products-page-filters a{
+  margin: auto;
+  font-weight: 100;
+  text-decoration: none;
+  color: var(--themeOne);
+  height: 100%;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+.product-search{
+  display: flex;
+}
+.product-search select{
+  margin: auto;
+  width: 80%;
+  height: 35px;
+}
+.products-page-products{
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
