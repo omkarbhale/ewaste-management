@@ -105,6 +105,41 @@ navbar {
   text-decoration: underline;
   color: var(--themeOne);
 }
+.mobile-menu{
+  display: none;
+}
+.mobile-login{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-main-row ul{
+    flex-direction: column;
+  }
+  .icons-div li{
+    text-align: center;
+  }
+  .promo-left{
+    text-align: center;
+  }
+  .mobile-menu{
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    font-size: 30px;
+  }
+  .mobile-login{
+    display: block;
+  }
+  .icons-div{
+    display: none;
+  }
+  .make-display-non{
+    visibility: hidden;
+    height: 0;
+  }
+}
+
 
 /* Footer of page  */
 
@@ -372,6 +407,11 @@ navbar {
   transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+@media screen and (max-width: 768px){
+  .cards-nav-wrap{
+    width: 90%;
+  }
+}
 
 
 
