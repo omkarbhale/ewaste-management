@@ -31,16 +31,26 @@ if(document.getElementById("productPage")){
     }
     
     try {
-        const {data} = await axios.get('/api/products', {
+        const {data} = await axios.get(`/api/products/${requestParam}`, {
             headers: {
                 Authorization: 'Bearer ' + (localStorage.getItem('auth-token') || '')
             }
         })
-        console.log(data);
+
+        addDataToGrid(data);
     } catch(e) {
         console.log(e);
     }
 
-    
+    let productGridHere = document.getElementById('productGridHere');
+
+    function addDataToGrid(data){
+        console.log(data.products);
+        data.products.forEach(ele => {
+            let cardHTML;
+
+            cardHTML
+        });
+    }
 }
 })()
