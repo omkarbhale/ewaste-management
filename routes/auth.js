@@ -5,9 +5,6 @@ const { register, login, del } = require('../controllers/auth')
 const authenticateUser = require('../middleware/authentication');
 
 router.post('/register', register)
-router.get('/login', (a, res) => {
-    res.send(`lavdya post kar`)
-})
 router.post('/login', login)
 router.post('/delete', authenticateUser, del);
 
