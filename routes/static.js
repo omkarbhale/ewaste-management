@@ -11,4 +11,8 @@ router.get('/products/:abcd', (req, res)=>{
     res.sendFile(path.join(__dirname, '../public', 'html', 'products.html'));
 })
 
+router.get('/products/items/:id', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'html', 'items.html'))
+})
+
 module.exports = router
