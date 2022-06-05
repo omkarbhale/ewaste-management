@@ -7,8 +7,8 @@ async function loginFunction() {
   let passwordLogin = document.getElementById("passwordLogin");
   try {
     const res = await axios.post("/api/auth/login", {
-      email: "omkarbhale001@gmail.com",
-      password: "omkarbhale",
+      email: userNameLogin,
+      password: passwordLogin
     });
     console.log(res.data.token);
     localStorage.setItem("auth-token", res.data.token);
@@ -165,5 +165,24 @@ if (document.getElementById("homepage")) {
 }
 
 if(document.getElementById('signup')){
-    
+    axios({
+        method: "post",
+        url: `/api/auth/register`,
+        headers: {
+          Authorization: "Bearer " + (localStorage.getItem("auth-token") || ""),
+        },
+        data:{
+            name: document.getElementById('signup-email').innerText,
+            email: document.getElementById('signup-email').innerText,
+            phoneNumber: document.getElementById('signup-email').innerText,
+            city: document.getElementById('signup-email').innerText,
+            address: document.getElementById('signup-email').innerText,
+            password: document.getElementById('signup-email').innerText,
+            createdProducts: document.getElementById('signup-email').innerText,
+            cartProducts: document.getElementById('signup-email').innerText
+        }
+      }).then(function (response) {
+          console.log(response);
+        addDataToPage(response.data.products, dataele);
+      });
 }
