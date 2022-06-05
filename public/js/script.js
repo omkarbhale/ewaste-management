@@ -36,21 +36,32 @@ if(document.getElementById("productPage")){
                 Authorization: 'Bearer ' + (localStorage.getItem('auth-token') || '')
             }
         })
-
+        let productGridHere = document.getElementById('productGridHere');
         addDataToGrid(data);
     } catch(e) {
         console.log(e);
     }
 
-    let productGridHere = document.getElementById('productGridHere');
+    
 
     function addDataToGrid(data){
         console.log(data.products);
+        let cardHTML ='';
         data.products.forEach(ele => {
-            let cardHTML;
 
-            cardHTML
+            cardHTML += `
+            <div class="card-box col-6 col-md-3">
+                <a href="">
+                    <img src="../imgs/bag.webp" alt="">
+                    <div class="pro-card-label">${ele.title}</div>
+                    <div class="pro-card-avail">IC, Motherboard</div>
+                    <div class="pro-card-price">₹${ele.sellingPrice}</div>
+                </a>
+            </div>
+            `;
         });
+
+        productGridHere.innerHTML= cardHTML;
     }
 }
 })()
