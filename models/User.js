@@ -18,11 +18,29 @@ const UserSchema = new mongoose.Schema({
 		],
 		unique: true,
 	},
+	phoneNumber: {
+		type: String,
+		match: [
+			/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/,
+			'Phone number format invalid'
+		]
+	},
+	city: {
+		type: String,
+		required: [true, 'Please provide city name']
+	},
+	address: {
+		type: String,
+		required: [true, 'Please provide address']
+	},
 	password: {
 		type: String,
 		required: [true, 'Please provide password'],
 		minlength: 6,
 	},
+	cartProducts: {
+		type: [mongoose.Types.ObjectId]
+	}
 })
 
 UserSchema.pre('save', async function () {

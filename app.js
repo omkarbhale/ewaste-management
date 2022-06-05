@@ -8,6 +8,7 @@ const connectDB = require('./db/connect');
 const authenticateUser = require('./middleware/authentication')
 
 // routers
+const staticRouter = require('./routes/static')
 const authRouter = require('./routes/auth');
 const productsRouter = require('./routes/products');
 
@@ -17,8 +18,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 
 app.use(express.json())
 
-app.use(express.static('./public'))
-app.use(express.static('./public/html'))
+app.use('/', staticRouter)
 
 app.get('/api', (req, res) => {
     res.send('<h1>E-Waste Management API</h1><a href="/">Visit website</a>');
