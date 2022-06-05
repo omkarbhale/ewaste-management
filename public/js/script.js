@@ -163,3 +163,7 @@ if (document.getElementById("homepage")) {
   }
 
 }
+
+if(document.getElementById('signup')){
+    
+}
