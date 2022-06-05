@@ -19,6 +19,8 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.json())
 
 app.use('/', staticRouter)
+app.use(express.static('public'))
+app.use(express.static('public/html'))
 
 app.get('/api', (req, res) => {
     res.send('<h1>E-Waste Management API</h1><a href="/">Visit website</a>');
