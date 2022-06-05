@@ -39,6 +39,13 @@ const UserSchema = new mongoose.Schema({
 		required: [true, 'Please provide password'],
 		minlength: 6,
 	},
+	createdProducts: {
+		type: [{
+			type: mongoose.Types.ObjectId,
+			ref: 'Product',
+			unique: true
+		}]
+	},
 	cartProducts: {
 		type: [{
 			type: mongoose.Types.ObjectId,

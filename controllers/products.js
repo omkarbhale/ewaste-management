@@ -32,16 +32,24 @@ const getProduct = async (req, res) => {
 
     const product = await Product.findOne({
         _id: productId,
-    })
+    }).populate('createdBy')
     if(!product) {
         throw new NotFoundError(`No product with ID ${productId}`)
     }
+    delete product['createdBy']['password']
     res.status(StatusCodes.OK).json({product})
 }
 
 const createProduct = async (req, res) => {
     req.body.createdBy = req.user.userId
     const product = await Product.create(req.body)
+    const response = await User.updateOne({
+        _id: req.user.userId
+    }, {
+        $push: {
+            createdProducts: product._id
+        }
+    })
     res.status(StatusCodes.CREATED).json({product})
 }
 
