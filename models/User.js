@@ -23,7 +23,8 @@ const UserSchema = new mongoose.Schema({
 		match: [
 			/^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/,
 			'Phone number format invalid'
-		]
+		],
+		required: true
 	},
 	city: {
 		type: String,

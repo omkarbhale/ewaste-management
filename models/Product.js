@@ -13,10 +13,9 @@ const ProductSchema = new mongoose.Schema(
             maxlength: 100,
             enum: {
                 values: [
-                    'category1',
-                    'category2',
-                    'category3',
-                    // All categories here
+                    'mobiles',
+                    'homeapplications',
+                    'computers'
                 ],
                 message: '{VALUE} is not supported'
             }
@@ -24,6 +23,10 @@ const ProductSchema = new mongoose.Schema(
         description: {
             type: String,
             required: [true, 'Please provide description']
+        },
+        components: {
+            type: String,
+            required: [true, 'Please provide components']
         },
         sellingPrice: {
             type: Number,

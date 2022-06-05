@@ -1,6 +1,7 @@
 const Product = require('../models/Product')
+const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes')
-const { NotFoundError, BadRequestError } = require('../errors')
+const { NotFoundError, BadRequestError } = require('../errors');
 
 const getAllProducts = async (req, res) => {
     const {category, minPrice, maxPrice} = req.query;
@@ -54,9 +55,28 @@ const deleteProduct = async (req, res) => {
     res.status(StatusCodes.OK).send()
 }
 
+const addToCart = async (req, res) => {
+    const { user } = req;
+    if(!req.body.productId) {
+        throw new BadRequestError('Please provide product ID')
+    }
+    const queryObject1 = {
+        _id: user.userId
+    }
+    const queryObject2 = {
+        $push: { cartProducts: req.body.productId }
+    }
+    console.log(queryObject1);
+    console.log(queryObject2);
+    const response = await User.updateOne(queryObject1, queryObject2)
+    console.log(response)
+    res.status(StatusCodes.OK).json(response)
+}
+
 module.exports = {
     getAllProducts,
     getProduct,
     createProduct,
-    deleteProduct
+    deleteProduct,
+    addToCart
 }

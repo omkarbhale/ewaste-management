@@ -5,12 +5,12 @@ const {
     getAllProducts,
     getProduct,
     createProduct,
-    deleteProduct
+    deleteProduct,
+    addToCart
 } = require('../controllers/products')
 
 router.route('/').post(createProduct).get(getAllProducts)
-
-// router.route('/:id').get(getProduct).delete(deleteProduct).patch(updateJob)
 router.route('/:id').get(getProduct).delete(deleteProduct)
+router.route('/cart').post(addToCart)
 
 module.exports = router
