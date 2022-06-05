@@ -29,16 +29,6 @@ if(document.getElementById("productPage")){
     } else if(path == '/products/computers'){
         requestParam = 'computers';
     }
-
-    // axios({
-    //     method: 'get',
-    //     url: '/api/products',
-    //     responseType: 'stream',
-    //     headers:    
-    //   })
-    //     .then(function (response) {
-    //       response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-    //     });
     
     try {
         const {data} = await axios.get('/api/products', {
@@ -50,5 +40,7 @@ if(document.getElementById("productPage")){
     } catch(e) {
         console.log(e);
     }
+
+    
 }
 })()
