@@ -168,21 +168,20 @@ if(document.getElementById('signup')){
     axios({
         method: "post",
         url: `/api/auth/register`,
-        headers: {
-          Authorization: "Bearer " + (localStorage.getItem("auth-token") || ""),
-        },
         data:{
             name: document.getElementById('signup-email').innerText,
-            email: document.getElementById('signup-email').innerText,
-            phoneNumber: document.getElementById('signup-email').innerText,
-            city: document.getElementById('signup-email').innerText,
-            address: document.getElementById('signup-email').innerText,
-            password: document.getElementById('signup-email').innerText,
-            createdProducts: document.getElementById('signup-email').innerText,
-            cartProducts: document.getElementById('signup-email').innerText
+            email: document.getElementById('signup-first-name').innerText,
+            city: document.getElementById('signup-city').innerText,
+            address: document.getElementById('signup-address').innerText,
+            password: document.getElementById('signup-password').innerText,
+            createdProducts: [],
+            cartProducts: []
         }
       }).then(function (response) {
           console.log(response);
-        addDataToPage(response.data.products, dataele);
-      });
+          localStorage.setItem("auth-token", res.data.token);
+          document.location.replace('/');
+      }).catch((err)=>{
+          alert("Some error.. enter data again");
+      })
 }
