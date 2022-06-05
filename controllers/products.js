@@ -23,7 +23,7 @@ const getAllProducts = async (req, res) => {
     }
 
     const products = await Product.find(queryObject)
-    res.status(StatusCodes.OK).json({ query: queryObject, numHits: products.length, products })
+    res.status(StatusCodes.OK).json({ numHits: products.length, products })
 }
 
 const getProduct = async (req, res) => {
@@ -70,7 +70,13 @@ const addToCart = async (req, res) => {
     console.log(queryObject2);
     const response = await User.updateOne(queryObject1, queryObject2)
     console.log(response)
-    res.status(StatusCodes.OK).json(response)
+    res.status(StatusCodes.CREATED).json(response)
+}
+
+const getCartProducts = async (req, res) => {
+    const {user} = req;
+    const response = await User.findById(user.userId).populate('cartProducts')
+    res.status(StatusCodes.OK).json({products: response.cartProducts})
 }
 
 module.exports = {
@@ -78,5 +84,6 @@ module.exports = {
     getProduct,
     createProduct,
     deleteProduct,
-    addToCart
+    addToCart,
+    getCartProducts
 }

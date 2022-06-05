@@ -40,7 +40,11 @@ const UserSchema = new mongoose.Schema({
 		minlength: 6,
 	},
 	cartProducts: {
-		type: [mongoose.Types.ObjectId]
+		type: [{
+			type: mongoose.Types.ObjectId,
+			ref: 'Product',
+			unique: true
+		}]
 	}
 })
 

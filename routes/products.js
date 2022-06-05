@@ -6,11 +6,12 @@ const {
     getProduct,
     createProduct,
     deleteProduct,
-    addToCart
+    addToCart,
+    getCartProducts
 } = require('../controllers/products')
 
 router.route('/').post(createProduct).get(getAllProducts)
+router.route('/cart').post(addToCart).get(getCartProducts)
 router.route('/:id').get(getProduct).delete(deleteProduct)
-router.route('/cart').post(addToCart)
 
 module.exports = router
