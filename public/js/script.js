@@ -7,8 +7,8 @@ async function loginFunction(){
     let passwordLogin = document.getElementById('passwordLogin');
     try {
         const res = await axios.post('/api/auth/login', {
-            email: 'lalala@gmail.com',
-            password: 'password'
+            email: 'omkarbhale001@gmail.com',
+            password: 'omkarbhale'
         })
         console.log(res.data.token);
         localStorage.setItem('auth-token', res.data.token);
@@ -31,7 +31,8 @@ if(document.getElementById("productPage")){
     }
     
     try {
-        const {data} = await axios.get(`/api/products/${requestParam}`, {
+        console.log(`/api/products?category=${requestParam}`    )
+        const {data} = await axios.get(`/api/products?category=${requestParam}`, {
             headers: {
                 Authorization: 'Bearer ' + (localStorage.getItem('auth-token') || '')
             }
@@ -51,10 +52,10 @@ if(document.getElementById("productPage")){
 
             cardHTML += `
             <div class="card-box col-6 col-md-3">
-                <a href="/api/products/items/${ele._id}">
+                <a href="/items/${ele._id}">
                     <img src="../imgs/bag.webp" alt="">
                     <div class="pro-card-label">${ele.title}</div>
-                    <div class="pro-card-avail">IC, Motherboard</div>
+                    <div class="pro-card-avail">${ele.components}</div>
                     <div class="pro-card-price">₹${ele.sellingPrice}</div>
                 </a>
             </div>
@@ -66,10 +67,48 @@ if(document.getElementById("productPage")){
 }
 })()
 
-if(document.getElementById('itemsPage')){
-    let path = window.location.pathname;
-    let requestParam = '';
-    console.log(path);
-}
-// (async () => {
-// })()
+
+
+    if(document.getElementById('itemsPage')){
+        let path = window.location.pathname;
+        let requestParam = path.split("/")[2];
+
+        axios({
+            method: 'get',
+            url: `/api/products/${requestParam}`,
+            headers: {
+                Authorization: 'Bearer ' + (localStorage.getItem('auth-token') || '')
+            }
+          })
+            .then(function (response) {
+                addDataToPage(response.data.product)
+            });
+            let itemsPage = document.getElementById('itemsPage');
+            function addDataToPage(ele){
+                console.log(ele);
+                let dataHTML = `
+                <div class="row items-row">
+                    <div class="col-md-6 item-product-img">
+                        <img src="../imgs/bag.webp" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item-page-card" style="width: 80%;">
+                            <h2>${ele.title}</h2>
+                            <div class="item-price-here">₹ ${ele.sellingPrice}</div>
+                            <hr>
+                            <div class="item-category">${ele.category}</div>
+                            <div class="item-parts-avail">${ele.components}</div>
+                            <div class="" style="width: 50%; margin: auto;">
+                                <a onclick="" style="width: 100%;" class="proj-btn">Add to Cart</a>
+                            </div>
+                            <br>
+                            <div class="item-details">${ele.description}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+
+                itemsPage.innerHTML = dataHTML;
+            }
+        }
