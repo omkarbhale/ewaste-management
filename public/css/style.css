@@ -459,3 +459,29 @@ navbar {
   width: 80%;
   margin: auto;
 }
+
+
+
+/* Items page Css here  */
+
+.item-page{
+  display: flex;
+}
+
+.items-row{
+  width: 80%;
+  margin: 2rem auto;
+}
+
+.item-product-img img{
+  width: 100%;
+  padding: 0 4rem;
+}
+
+.item-page-card > *{
+  padding-top: 0.5rem;
+}
+
+.item-page-card hr{
+  padding: 0;
+}

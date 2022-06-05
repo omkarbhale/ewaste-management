@@ -51,7 +51,7 @@ if(document.getElementById("productPage")){
 
             cardHTML += `
             <div class="card-box col-6 col-md-3">
-                <a href="">
+                <a href="/api/products/items/${ele._id}">
                     <img src="../imgs/bag.webp" alt="">
                     <div class="pro-card-label">${ele.title}</div>
                     <div class="pro-card-avail">IC, Motherboard</div>
@@ -65,3 +65,11 @@ if(document.getElementById("productPage")){
     }
 }
 })()
+
+if(document.getElementById('itemsPage')){
+    let path = window.location.pathname;
+    let requestParam = '';
+    console.log(path);
+}
+// (async () => {
+// })()
