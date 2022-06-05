@@ -15,4 +15,16 @@ router.get('/items/:any', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'html', 'items.html'))
 })
 
+router.get('/mycart', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'html', 'mycart.html'))
+})
+
+router.get('/postad', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'html', 'postad.html'))
+})
+
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'html', 'about.html'))
+})
+
 module.exports = router

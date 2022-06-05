@@ -485,3 +485,80 @@ navbar {
 .item-page-card hr{
   padding: 0;
 }
+
+/* My cart page  */
+
+.cart-head-row{
+  width: 80%;
+  margin: auto;
+}
+
+.cart-data-row{
+  width: 80%;
+  margin: auto;
+  height: 70vh;
+  background: url(../imgs/noitem.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Post my Ad  */
+
+.post-head-row{
+  width: 80%;
+  margin: auto;
+}
+
+.post-data-row{
+  width: 80%;
+  margin: auto;
+}
+
+.post-ad-img{
+  position: relative;
+}
+
+.post-ad-img img{
+  width: 100%;
+  height: 80vh;
+}
+
+.post-img-box{
+  width: 70%;
+  height: 40%;
+  background-color: white;
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  display: flex;
+}
+
+.post-img-box h3{
+  margin: auto;
+}
+
+.post-ad-form{
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.post-ad-form > * {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* About page Css  */
+
+.about-head-row{
+  width: 80%;
+  margin: auto;
+}
+
+.about-content{
+  width: 80%;
+  margin: auto;
+  font-size: 20px;
+  padding: 2rem;
+}
